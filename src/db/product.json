@@ -1,92 +1,101 @@
 [
-    {
-        "id": 1,
-        "title":"bulbasaur",
-        "description":"pokemon tipo planta",
-        "price":200,
-        "thumbnail":"Sin imagen",
-        "code":"bulbasaur",
-        "stock":25
-    },
-    {
-        "id": 2,
-        "title":"Charmander",
-        "description":"Pokemon tipo Fuego ",
-        "price":245,
-        "thumbnail":"Sin imagen",
-        "code":"Charmander",
-        "stock":100
-    },
-    {
-        "id": 3,
-        "title":"squirtel",
-        "description":"Pokeomn tipo agua",
-        "price":875,
-        "thumbnail":"Sin imagen",
-        "code":"quirtel",
-        "stock":456
-    },
-    {
-        "id": 4,
-        "title":"Charizard",
-        "description":"Pokemon evolucion de charmander",
-        "price":2546,
-        "thumbnail":"Sin imagen",
-        "code":"charizard",
-        "stock":78
-    },
-    {
-        "id": 5,
-        "title":"Lugia",
-        "description":"pokeomn Legendario tipo hada",
-        "price":78845,
-        "thumbnail":"Sin imagen",
-        "code":"Lugia",
-        "stock":5
-    },
-    {
-        "id": 6,
-        "title":"Artiquno",
-        "description":"pokemon Legendario tipo hielo",
-        "price":345,
-        "thumbnail":"Sin imagen",
-        "code":"Artiquno",
-        "stock":645
-    },
-    {
-        "id": 7,
-        "title":"Moltres",
-        "description":"pokemon Legendario tipo fuego",
-        "price":465,
-        "thumbnail":"Sin imagen",
-        "code":"Moltres",
-        "stock":15476
-    },
-    {
-        "id": 8,
-        "title":"Entel",
-        "description":"Perro Legendario tipo Fuego",
-        "price":789,
-        "thumbnail":"Sin imagen",
-        "code":"Entel",
-        "stock":4567
-    },
-    {
-        "id": 9,
-        "title":"Chicorita",
-        "description":"Pokeomn inicial de honen tipo planta",
-        "price":453,
-        "thumbnail":"Sin imagen",
-        "code":"chicorita",
-        "stock":456
-    },
-    {
-        "id": 10,
-        "title":"Zapdos",
-        "description":"Pokemon Legendario tipo electrico",
-        "price":786,
-        "thumbnail":"Sin imagen",
-        "code":"Zapdos",
-        "stock":321
-    }
+  {
+    "id": 1,
+    "title": "bulbasaur",
+    "description": "pokemon tipo planta",
+    "price": 200,
+    "thumbnail": "Sin imagen",
+    "code": "bulbasaur",
+    "stock": 25
+  },
+  {
+    "id": 2,
+    "title": "Charmander",
+    "description": "Pokemon tipo Fuego ",
+    "price": 245,
+    "thumbnail": "Sin imagen",
+    "code": "Charmander",
+    "stock": 100
+  },
+  {
+    "id": 3,
+    "title": "squirtel",
+    "description": "Pokeomn tipo agua",
+    "price": 875,
+    "thumbnail": "Sin imagen",
+    "code": "quirtel",
+    "stock": 456
+  },
+  {
+    "id": 4,
+    "title": "Charizard",
+    "description": "Pokemon evolucion de charmander",
+    "price": 2546,
+    "thumbnail": "Sin imagen",
+    "code": "charizard",
+    "stock": 78
+  },
+  {
+    "id": 5,
+    "title": "Lugia",
+    "description": "pokeomn Legendario tipo hada",
+    "price": 78845,
+    "thumbnail": "Sin imagen",
+    "code": "Lugia",
+    "stock": 5
+  },
+  {
+    "id": 6,
+    "title": "Artiquno",
+    "description": "pokemon Legendario tipo hielo",
+    "price": 345,
+    "thumbnail": "Sin imagen",
+    "code": "Artiquno",
+    "stock": 645
+  },
+  {
+    "id": 7,
+    "title": "Moltres",
+    "description": "pokemon Legendario tipo fuego",
+    "price": 465,
+    "thumbnail": "Sin imagen",
+    "code": "Moltres",
+    "stock": 15476
+  },
+  {
+    "id": 8,
+    "title": "Entel",
+    "description": "Perro Legendario tipo Fuego",
+    "price": 789,
+    "thumbnail": "Sin imagen",
+    "code": "Entel",
+    "stock": 4567
+  },
+  {
+    "id": 9,
+    "title": "Chicorita",
+    "description": "Pokeomn inicial de honen tipo planta",
+    "price": 453,
+    "thumbnail": "Sin imagen",
+    "code": "chicorita",
+    "stock": 456
+  },
+  {
+    "id": 10,
+    "title": "Zapdos",
+    "description": "Pokemon Legendario tipo electrico",
+    "price": 786,
+    "thumbnail": "Sin imagen",
+    "code": "Zapdos",
+    "stock": 321
+  },
+  {
+    "id": 11,
+    "title": "Ditto2.0",
+    "description": "Pokemon mutante nacido de los experimentos con mew",
+    "price": 500,
+    "code": "Ditto",
+    "stock": 4,
+    "status": true
+  }
 ]
