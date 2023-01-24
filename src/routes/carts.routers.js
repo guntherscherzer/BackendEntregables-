@@ -3,23 +3,27 @@ import CartManager from "../controllers/CartManager.js";
 import __dirname from "../utils.js";
 
 const cartRouter = Router();
-const CartManager = new CartManager(__dirname+"/db/cart.json");
+const cartManager = new CartManager(__dirname+"/db/cart.json");
 
-cartRouter.get("/",(req,res)=>{
-    res.send();
-})
-crartRouter.get("/:cid",(req,res)=>{
-    let cid = Number(req.params.cid);
-    let cart = cartManager.getCartById(cid)
 
-    res.send({cart.products});
+cartRouter.get("/:cid",(req,res)=>{
+    try {
+        let cid = Number(req.params.cid);
+        let cart = cartManager.getCartById(cid)
+    
+        res.send({status:"success" ,paylode:cart.products});
+        
+    } catch (error) {
+        console.log(error);
+        res.send({status:"error", message:error.message});
+    }
 })
 
 cartRouter.post("/",(req,res)=>{
     try {
-        let addCart = req.body;
+        let addCart = req.body.products;
         
-        cartManager.cartAdd(addCart);
+        cartManager.addCart(addCart);
         res.send({status:"success", message:"Carrito cargado con exito"});
         
     } catch (error) {

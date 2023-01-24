@@ -1,5 +1,5 @@
 import { Router } from "express";
-import ProductManager from "../models/ProductManager.js";
+import ProductManager from "../controllers/ProductManager.js";
 import __dirname from "../utils.js";
 
 
@@ -8,18 +8,29 @@ const productRouter = Router();
 
 
 productRouter.get("/",(req,res)=>{
+    try {
     let products = productManager.getProducts();
     let limit = req.query.limit || products.length;
-
-  
+    
     res.send({products:products.splice(0,limit)});
+} catch (error) {
+    console.log(error);
+    res.send({status:"error", message:error.message});
+}
+  
 })
 
 productRouter.get("/:pid",(req,res)=>{
-    let pid = Number(req.params.pid);
-    let product = productManager.getProductById(pid)
-
-    res.send({product});
+    try {
+        let pid = Number(req.params.pid);
+        let product = productManager.getProductById(pid)
+    
+        res.send({product});
+        
+    } catch (error) {
+        console.log(error);
+        res.send({status:"error", message:error.message});
+    }
 })
 
 productRouter.post("/",(req,res)=>{

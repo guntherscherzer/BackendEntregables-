@@ -5,6 +5,7 @@ class CartManager{
         this.path = path;
         this.lastId= 0;
         this.carts = []
+        this.loadFile();
     }
     readFile() {
         return JSON.parse(fs.readFileSync( this.path, `utf-8`));
@@ -18,9 +19,9 @@ class CartManager{
 
         let idAct = 0;
         this.carts.forEach(cart=>{
-            if(cart.id > idAct) idAct=cart.id;
+            if(cart.id >= idAct) idAct=cart.id+1;
         })
-        this.lastId= idAct+1;
+        this.lastId= idAct;
     }
 
     addCart(products){
@@ -29,7 +30,7 @@ class CartManager{
         this.writeFile();
     }
     getCartById(id){
-        let carts = this.readFile();
+        let carts = this.carts;
         const cart = carts.find(cart=>cart.id === id);
         if(!!cart){
             return(cart);
@@ -40,10 +41,14 @@ class CartManager{
     }
 
     addProductToCart(cartId,productId){
-        let cart = getCartById(cartId);
-        let product = cart.products.find(products=>product.id === productId );
+       
+        let cart =this.getCartById(cartId);
+        console.log(cart);
+        let product = cart.products.find(product=>product.product === productId );
 
         let cartIndex = this.carts.indexOf(cart);
+
+        console.log("errroorde prueba",cart,this.carts,cartIndex,this.carts[cartIndex]);
         
         if (!!!product) {
             this.carts[cartIndex].products.push({product:productId,quantity:1})
@@ -52,6 +57,7 @@ class CartManager{
             let productIndex = cart.products.indexOf(product)
             this.carts[cartIndex].products[productIndex].quantity++
         }
+        this.writeFile();
     }
 }
 
