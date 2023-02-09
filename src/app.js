@@ -1,6 +1,8 @@
 import express from "express";
 import handlebars from "express-handlebars";
 import {Server} from "socket.io";
+import mongoose from "mongoose";
+
 
 import productRouter from "./routes/prducts.router.js";
 import cartRouter from "./routes/carts.routers.js";
@@ -12,6 +14,13 @@ import __dirname from "./utils.js";
 const app = express();
 const server = app.listen(8080, ()=>console.log("servidor activo en http://localhost:8080/"));
 const io = new Server(server);
+
+
+//coneccion a base mongoDb//
+mongoose.connect("mongodb+srv://guntherscherzer:gunther1234@coderhaus.ct0douz.mongodb.net/?retryWrites=true&w=majority", error=>{
+    console.log("error en conexion:",error);
+    process.exit();
+})
 
 //Configutacion del server//
 app.engine("handlebars", handlebars.engine());
@@ -35,4 +44,7 @@ app.use(addWebsocket);
 app.use("/", viewRouter);
 app.use("/api/products/",productRouter);
 app.use("/api/carts", cartRouter);
+
+
+
 

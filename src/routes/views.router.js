@@ -1,17 +1,20 @@
 import { Router } from "express";
-import ProductManager from "../controllers/ProductManager.js";
+import ProductManager from "../daos/ProductManager.js";
 import __dirname from "../utils.js";
+import ProductDb from "../daos/product.db.js";
+
 
 const viewRouter = Router();
-const productManager = new ProductManager(__dirname+"/db/product.json");
+const productDb = new ProductDb(__dirname+"/db/product.json");
 
-viewRouter.get("/",(req,res)=>{
-    let products = productManager.getProducts();
+viewRouter.get("/",async (req,res)=>{
+    let products = await productDb.getProducts().lean();
     
     res.render("home",{products});
+    res.render("index",{});
 })
-viewRouter.get("/realtimeproducts", (req,res)=>{
-    let products = productManager.getProducts();
+viewRouter.get("/realtimeproducts", async (req,res)=>{
+    let products = await productDb.getProducts().lean();
     
     req.io.on('connection', socket=>{
         console.log("Cliente conectado");
@@ -19,5 +22,6 @@ viewRouter.get("/realtimeproducts", (req,res)=>{
 
     res.render("realTimeProducts",{products});
 })
+
 
 export default viewRouter;
