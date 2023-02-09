@@ -18,8 +18,11 @@ const io = new Server(server);
 
 //coneccion a base mongoDb//
 mongoose.connect("mongodb+srv://guntherscherzer:gunther1234@coderhaus.ct0douz.mongodb.net/?retryWrites=true&w=majority", error=>{
-    console.log("error en conexion:",error);
-    process.exit();
+    if (error) {
+       console.log("error en conexion:",error);
+       process.exit();
+    
+}
 })
 
 //Configutacion del server//

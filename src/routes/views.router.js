@@ -11,7 +11,6 @@ viewRouter.get("/",async (req,res)=>{
     let products = await productDb.getProducts().lean();
     
     res.render("home",{products});
-    res.render("index",{});
 })
 viewRouter.get("/realtimeproducts", async (req,res)=>{
     let products = await productDb.getProducts().lean();
@@ -23,5 +22,7 @@ viewRouter.get("/realtimeproducts", async (req,res)=>{
     res.render("realTimeProducts",{products});
 })
 
-
+viewRouter.get("/chat",(req,res)=>{
+    res.render("chat",{})
+})
 export default viewRouter;
