@@ -43,8 +43,8 @@ productRouter.post("/", async (req,res)=>{
        
        await productDb.addProducts(productAdd);
 
-       let products = productDb.getProducts();
-       req.io.sockets.emit('updateProducts', products);
+    //    let products = productDb.getProducts();
+    //    req.io.sockets.emit('updateProducts', products);
 
        res.send({status:"success", message:"Producto cargado con exito"});
    } catch (error) {
