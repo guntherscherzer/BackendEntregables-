@@ -7,6 +7,7 @@ import mongoose from "mongoose";
 import productRouter from "./routes/prducts.router.js";
 import cartRouter from "./routes/carts.routers.js";
 import viewRouter from "./routes/views.router.js";
+import messagesModel from "./daos/models/messages.model.js"; 
 import __dirname from "./utils.js";
 
 
@@ -14,7 +15,6 @@ import __dirname from "./utils.js";
 const app = express();
 const server = app.listen(8080, ()=>console.log("servidor activo en http://localhost:8080/"));
 const io = new Server(server);
-
 
 //coneccion a base mongoDb//
 mongoose.connect("mongodb+srv://guntherScherzer:gunther150397@backendproyectofinal.wbo1qc7.mongodb.net/?retryWrites=true&w=majority", error=>{
@@ -37,6 +37,19 @@ const addWebsocket = (req, res, next)=>{
     next();
 }
 
+
+//ChatLogica//
+io.on("connection",socket=>{
+    console.log("se conecto un wachin");
+
+    socket.on("message",async (data)=>{
+        await messagesModel.create(data);  
+
+        let messages = await messagesModel.find();
+        io.emit("messageLogs", messages);
+    })
+})
+
 //Midlewares//
 app.use(express.static(__dirname+"/public"));
 app.use(express.json());
@@ -47,7 +60,5 @@ app.use(addWebsocket);
 app.use("/", viewRouter);
 app.use("/api/products/",productRouter);
 app.use("/api/carts", cartRouter);
-
-
 
 

@@ -9,9 +9,9 @@ const productRouter = Router();
 const productDb = new ProductDb();
 
 
-productRouter.get("/",(req,res)=>{
+productRouter.get("/",async (req,res)=>{
     try {
-        let products = productDb.getProducts();
+        let products = await productDb.getProducts();
         let limit = req.query.limit || products.length;
         
         res.send({products:products.splice(0,limit)});
@@ -22,10 +22,10 @@ productRouter.get("/",(req,res)=>{
   
 })
 
-productRouter.get("/:pid",(req,res)=>{
+productRouter.get("/:pid",async (req,res)=>{
     try {
         let pid = Number(req.params.pid);
-        let product = productDb.getProductById(pid)
+        let product = await  productDb.getProductById(pid)
     
         res.send({product});
         
@@ -43,8 +43,8 @@ productRouter.post("/", async (req,res)=>{
        
        await productDb.addProducts(productAdd);
 
-    //    let products = productDb.getProducts();
-    //    req.io.sockets.emit('updateProducts', products);
+       let products = await productDb.getProducts();
+       req.io.sockets.emit('updateProducts', products);
 
        res.send({status:"success", message:"Producto cargado con exito"});
    } catch (error) {
@@ -53,14 +53,14 @@ productRouter.post("/", async (req,res)=>{
    }
 })
 
-productRouter.put("/:pid",(req,res)=>{
+productRouter.put("/:pid",async(req,res)=>{
     try {
         let pid = req.params.pid;
         let productUpdate = req.body;
 
-        productDb.updateProduct(pid,productUpdate);
+        await productDb.updateProduct(pid,productUpdate);
 
-        let products = productDb.getProducts();
+        let products = await productDb.getProducts();
         req.io.sockets.emit('updateProducts', products);
         
         res.send({status:"success", message:"Producto actualizado con exito"});
@@ -71,13 +71,13 @@ productRouter.put("/:pid",(req,res)=>{
     }
 })
 
-productRouter.delete("/:pid",(req,res)=>{
+productRouter.delete("/:pid",async(req,res)=>{
     try {
         let pid = req.params.pid;
 
-        productDb.deleteProduct(pid);
+        await productDb.deleteProduct(pid);
 
-        let products = productDb.getProducts();
+        let products = await productDb.getProducts();
         req.io.sockets.emit('updateProducts', products);
 
         res.send({status:"success", message:"Producto eliminado con exito"});
